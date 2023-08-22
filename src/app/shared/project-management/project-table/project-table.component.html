@@ -1,6 +1,6 @@
 <mat-card>
     <mat-card-content>
-        <div class="row">
+        <div class="row justify-content-between mb-2">
             <div class="col-md-3">
                 <p>
                     <mat-form-field appearance="fill" class="bg-white w-100">
@@ -9,8 +9,26 @@
                     </mat-form-field>
                 </p>
             </div>
-            <div class=" col-md-2">
-                <!-- {{dataSource | json}} -->
+            <div class="col-md-2">
+                <div class="row">
+                    <div class="col-4">
+                        <label for="" class="font-weight-bold mt-2"> Sort by:</label>
+                    </div>
+                    <div class="col-8">
+                        <select #item (change)="onSelected()" class="form-control">
+                            <option value="">Priority</option>
+                            <option value="Low">
+                                Low
+                            </option>
+                            <option value="Medium">
+                                Medium
+                            </option>
+                            <option value="High">
+                                High
+                            </option>
+                        </select>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="">

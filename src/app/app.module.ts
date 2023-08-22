@@ -71,3 +71,5 @@ export class AppModule { }
 // imports: [
 //   NgChartsModule
 // ]
+
+// ng build --optimization false --output-path docs --base-href /project-management-0/

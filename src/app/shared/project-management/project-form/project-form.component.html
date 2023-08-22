@@ -140,8 +140,8 @@
                                     <label for="">Location</label>
                                     <mat-form-field appearance="outline" class="w-100">
                                         <mat-select formControlName="location" placeholder="--- Select ---">
-                                            <mat-option *ngFor="let food of location" [value]="food">
-                                                {{food}}
+                                            <mat-option *ngFor="let loc of location" [value]="loc">
+                                                {{loc}}
                                             </mat-option>
                                         </mat-select>
                                         <mat-error>

@@ -1,9 +1,9 @@
-import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Iproject, IprojectStatus, PeriodicElement } from '../../model/project';
 import { ProjectService } from '../../services/project.service';
-import { map } from 'rxjs';
+import { filter, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute } from '@angular/router';
@@ -22,7 +22,7 @@ export class ProjectTableComponent implements OnInit, AfterViewInit, OnDestroy {
 
   displayedColumns: string[] = ['projectname', 'reason', 'type', 'division', 'category', 'priority', 'dept', 'location', 'status', 'action1', 'action2', 'action3'];
   dataSource!: MatTableDataSource<Iproject>
-
+  SelectedValue!: string
   constructor(
     private _projectService: ProjectService,
     private _route: ActivatedRoute,
@@ -62,6 +62,19 @@ export class ProjectTableComponent implements OnInit, AfterViewInit, OnDestroy {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  @ViewChild('item') item!: ElementRef;
+
+  onSelected(): void {
+    let value = this.item.nativeElement.value;
+    console.log(value);
+    this.dataSource.filter = value.trim().toLowerCase();
+
+  }
+
+  onKeyUp() {
+    console.log(this.SelectedValue);
+
   }
 
   projectStatusHandler(id: string, status: string) {
