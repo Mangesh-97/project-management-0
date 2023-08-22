@@ -1,0 +1,27 @@
+mat-card {
+    border-left: 6px solid #19c8d9;
+    min-height: 160px;
+}
+
+.title {
+    color: rgba($color: #000000, $alpha: 0.6);
+    font-size: large;
+    font-weight: 500;
+    // justify-content: stretch
+}
+
+.chart {
+    margin-left: 30px;
+}
+
+@media screen and (max-width: 600px) {
+    mat-card {
+        border-left: 0;
+        border-bottom: 6px solid #19c8d9;
+        margin-bottom: 20px;
+    }
+
+    .chart {
+        margin-left: 0;
+    }
+}

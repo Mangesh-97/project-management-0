@@ -1,0 +1,37 @@
+<div class="container-fluid container-c mt-90">
+  <header class="text-white header" *ngIf="loginStatus">
+    <mat-icon class="arrowIcon" [ngClass]="{'invisible': heading.includes('Dashboard')}"
+      (click)="onBackNav()">keyboard_arrow_left</mat-icon>
+    <h1 class="mb-0">{{heading}}</h1>
+    <div class="logo-container">
+      <mat-icon class="logoIcon">star_half</mat-icon>
+    </div>
+    <button mat-button class="menu-icon">
+      <mat-icon (click)="nav = !nav">menu</mat-icon>
+    </button>
+  </header>
+
+  <div class="row">
+    <div class="col-12">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+<nav class="nav shadow" *ngIf="loginStatus" [ngClass]="{'d-block': nav}">
+  <mat-icon class="dashIcon" routerLink="/dashboard" routerLinkActive="ac" [routerLinkActiveOptions]="{exact: true}"
+    (click)="nav =false">av_timer</mat-icon>
+  <mat-icon class="dataIcon" routerLink="/project-table" routerLinkActive="ac" [routerLinkActiveOptions]="{exact: true}"
+    (click)="nav =false">storage</mat-icon>
+  <mat-icon class="addIcon" routerLink="/project-form" routerLinkActive="ac" [routerLinkActiveOptions]="{exact: true}"
+    (click)="nav =false">add</mat-icon>
+  <mat-icon class="exitIcon" (click)="onLogOut()" (click)="nav =false">exit_to_app</mat-icon>
+</nav>
+
+
+
+<div class="loader" *ngIf="isLoading">
+  <div class="spinner-border text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>

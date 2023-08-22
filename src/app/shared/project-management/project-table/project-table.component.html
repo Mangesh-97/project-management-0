@@ -1,0 +1,121 @@
+<mat-card>
+    <mat-card-content>
+        <div class="row">
+            <div class="col-md-3">
+                <p>
+                    <mat-form-field appearance="fill" class="bg-white w-100">
+                        <input matInput placeholder="Search" (keyup)="applyFilter($event)">
+                        <mat-icon matSuffix>search</mat-icon>
+                    </mat-form-field>
+                </p>
+            </div>
+            <div class=" col-md-2">
+                <!-- {{dataSource | json}} -->
+            </div>
+        </div>
+        <div class="">
+            <div class="table-responsive">
+                <table mat-table [dataSource]="dataSource" class="text-capitalize">
+
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="projectname">
+                        <th mat-header-cell *matHeaderCellDef> Project Name </th>
+                        <td mat-cell *matCellDef="let element">
+                            <span class="p-name">
+                                {{element.projectTheme}}
+                            </span><br>
+                            <span class="text-secondary">
+                                {{element.startDate | date :
+                                'mediumDate'}} to
+                                {{element.endDate | date : 'mediumDate'}}
+                            </span>
+                        </td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="reason">
+                        <th mat-header-cell *matHeaderCellDef> Reason </th>
+                        <td mat-cell *matCellDef="let element"> {{element.reason}} </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="type">
+                        <th mat-header-cell *matHeaderCellDef> Type </th>
+                        <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+                    </ng-container>
+
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="division">
+                        <th mat-header-cell *matHeaderCellDef> Division </th>
+                        <td mat-cell *matCellDef="let element"> {{element.division}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="category">
+                        <th mat-header-cell *matHeaderCellDef> category </th>
+                        <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="priority">
+                        <th mat-header-cell *matHeaderCellDef> priority </th>
+                        <td mat-cell *matCellDef="let element"> {{element.priority}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="dept">
+                        <th mat-header-cell *matHeaderCellDef> Department </th>
+                        <td mat-cell *matCellDef="let element"> {{element.department}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="location">
+                        <th mat-header-cell *matHeaderCellDef> location </th>
+                        <td mat-cell *matCellDef="let element"> {{element.location}} </td>
+                    </ng-container>
+                    <!-- [ngClass]="{'text-success': element.status.includes('Running'),
+                    'text-warning': element.status.includes('Closed'),
+                    'text-danger': element.status.includes('Cancel'),
+                    'text-blue': element.status.includes('Registred')
+                }" -->
+                    <ng-container matColumnDef="status">
+                        <th mat-header-cell *matHeaderCellDef> status </th>
+                        <td mat-cell *matCellDef="let element" class="text-blue"> {{element.status}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="action1">
+                        <th mat-header-cell *matHeaderCellDef> </th>
+                        <td mat-cell *matCellDef="let element">
+                            <div class="text-center action-btn">
+                                <button mat-flat-button class="startBtn"
+                                    (click)="projectStatusHandler(element.id,'Running')">Start</button>
+                            </div>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="action2">
+                        <th mat-header-cell *matHeaderCellDef> </th>
+                        <td mat-cell *matCellDef="let element">
+                            <div class="text-center action-btn">
+                                <button mat-stroked-button class="closeBtn"
+                                    (click)="projectStatusHandler(element.id,'Closed')">Close</button>
+                            </div>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="action3">
+                        <th mat-header-cell *matHeaderCellDef> </th>
+                        <td mat-cell *matCellDef="let element">
+                            <div class="text-center action-btn">
+                                <button mat-stroked-button class="cancelBtn"
+                                    (click)="projectStatusHandler(element.id,'Cancelled')">Cancel</button>
+                            </div>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </div>
+
+
+            <mat-paginator [pageSizeOptions]="[10,15, 20]" showFirstLastButtons
+                aria-label="Select page of periodic elements">
+            </mat-paginator>
+        </div>
+    </mat-card-content>
+</mat-card>

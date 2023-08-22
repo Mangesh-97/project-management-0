@@ -1,0 +1,166 @@
+<div class="row">
+    <div class="col-12">
+        <div class="bg-b"></div>
+
+        <div class="row">
+            <div class="col-sm-4 offset-md-4 px-50 sm-4">
+                <div class="heading text-center">
+                    <div class="icon">
+                        <!-- <mat-icon>spa</mat-icon> -->
+                        <mat-icon>star_half</mat-icon>
+                        <!-- <mat-icon>ac_unit</mat-icon> -->
+                    </div>
+                    <h3>Online Project Management</h3>
+                </div>
+
+                <mat-card class="shadow-lg">
+                    <mat-card-content class="p-3">
+                        <form #logInForm="ngForm" (ngSubmit)="onLogin(logInForm)">
+                            <div class="login-form" *ngIf="!alreadyHaveAccount">
+                                <div class="text-center py-4">
+                                    <h2>Login to get Started</h2>
+                                </div>
+                                <p>
+                                    <label for="email" class="text-secondary mb-0">Email</label>
+                                    <mat-form-field appearance="outline" class="w-100">
+                                        <input matInput placeholder="Enter Your Email" autocomplete="email" required
+                                            pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" ngModel
+                                            #signInEmail="ngModel" name="signInEmail">
+                                        <mat-icon matSuffix>alternate_email</mat-icon>
+                                        <mat-error *ngIf="signInEmail.hasError('required')">
+                                            this field is mandatory
+                                        </mat-error>
+
+                                        <mat-error *ngIf="signInEmail.errors?.['pattern']">
+                                            Please Enter Valid Email ID
+                                        </mat-error>
+                                    </mat-form-field>
+                                </p>
+                                <p class="mb-0">
+                                    <label for="password" class="text-secondary mb-0">Password</label>
+                                    <mat-form-field appearance="outline" class="w-100">
+                                        <input matInput placeholder="Enter Your Password"
+                                            [type]="hide ? 'password' : 'text'" autocomplete="current-password" required
+                                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}$"
+                                            ngModel #signInPassword="ngModel" name="signInPassword">
+                                        <mat-icon matSuffix (click)="hide = !hide">{{hide? 'visibility_off' :
+                                            'visibility'}}</mat-icon>
+                                        <mat-error *ngIf="signInPassword.hasError('required')">
+                                            this field is mandatory
+                                        </mat-error>
+                                        <mat-error *ngIf="signInPassword.errors?.['pattern']">
+                                            password should be container atleast one capital letter , one specail
+                                            character,
+                                            one
+                                            number
+                                            and
+                                            min length
+                                            of password should be 8
+                                        </mat-error>
+                                    </mat-form-field>
+
+                                </p>
+                                <p class="text-right">
+                                    <a href="">Forget Password?</a>
+                                </p>
+
+                            </div>
+                            <mat-card-actions class="text-center my-4 mb-4" *ngIf="!alreadyHaveAccount">
+                                <button mat-raised-button class="loginBtn">Login</button>
+                            </mat-card-actions>
+                        </form>
+
+
+                        <form action="" #signUpForm="ngForm" (ngSubmit)="onSignUp(signUpForm)">
+                            <div class="signUp-form" *ngIf="alreadyHaveAccount">
+                                <div class="text-center py-4">
+                                    <h2>Sign Up to get Started</h2>
+                                </div>
+                                <p>
+                                    <label for="email" class="text-secondary mb-0">Email</label>
+                                    <mat-form-field appearance="outline" class="w-100">
+                                        <input matInput placeholder="Enter Your Email" ngModel #signUpemail="ngModel"
+                                            name="signUpemail" autocomplete="email" required
+                                            pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+                                        <mat-icon matSuffix>alternate_email</mat-icon>
+                                        <mat-error *ngIf="signUpemail.hasError('required')">
+                                            this field is mandatory
+                                        </mat-error>
+
+                                        <mat-error *ngIf="signUpemail.errors?.['pattern']">
+                                            Please Enter Valid Email ID
+                                        </mat-error>
+                                    </mat-form-field>
+                                </p>
+                                <p>
+                                    <label for="password" class="text-secondary mb-0">Password</label>
+                                    <mat-form-field appearance="outline" class="w-100">
+                                        <input matInput placeholder="Enter Your Password"
+                                            [type]="hide2 ? 'password' : 'text'" ngModel #signUpPassword="ngModel"
+                                            name="signUpPassword" autocomplete="new-password" required
+                                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}$">
+                                        <mat-icon matSuffix (click)="hide2 = !hide2">{{hide2? 'visibility_off' :
+                                            'visibility'}}</mat-icon>
+                                        <mat-error *ngIf="signUpPassword.hasError('required')">
+                                            this field is mandatory
+                                        </mat-error>
+                                        <mat-error *ngIf="signUpPassword.errors?.['pattern']">
+                                            password should be container atleast one capital letter , one specail
+                                            character,
+                                            one
+                                            number
+                                            and
+                                            min length
+                                            of password should be 8
+                                        </mat-error>
+                                    </mat-form-field>
+
+                                </p>
+                                <p class="mb-0">
+                                    <label for="password" class="text-secondary mb-0">Confirm Password</label>
+                                    <mat-form-field appearance="outline" class="w-100">
+                                        <input matInput placeholder="Enter Your Confirm Password"
+                                            [type]="hide1 ? 'password' : 'text'" ngModel #cpassword="ngModel"
+                                            name="cpassword" autocomplete="new-password" required
+                                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}$">
+                                        <mat-icon matSuffix (click)="hide1 = !hide1">{{hide1? 'visibility_off' :
+                                            'visibility'}}</mat-icon>
+                                        <mat-error *ngIf="cpassword.hasError('required')">
+                                            this field is mandatory
+                                        </mat-error>
+                                        <mat-error *ngIf="cpassword.errors?.['pattern']">
+                                            password should be container atleast one capital letter , one specail
+                                            character,
+                                            one
+                                            number
+                                            and
+                                            min length
+                                            of password should be 8
+                                        </mat-error>
+                                    </mat-form-field>
+
+                                </p>
+
+                            </div>
+                            <mat-card-actions class="text-center my-4 mb-3" *ngIf="alreadyHaveAccount">
+                                <button mat-raised-button class="loginBtn">Sign
+                                    Up</button>
+                            </mat-card-actions>
+                        </form>
+
+                    </mat-card-content>
+
+
+                    <p *ngIf="!alreadyHaveAccount" class="text-primary">
+                        <a (click)="alreadyHaveAccount = !alreadyHaveAccount">Don't Have
+                            Account?</a>
+                    </p>
+                    <p *ngIf="alreadyHaveAccount" class="text-primary">
+                        <a (click)="alreadyHaveAccount = !alreadyHaveAccount">Already..! Have Account?</a>
+                    </p>
+                </mat-card>
+            </div>
+        </div>
+
+    </div>
+</div>

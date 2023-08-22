@@ -1,0 +1,80 @@
+table {
+    width: 100%;
+}
+
+th {
+    background-color: #ebf5ff;
+    color: #000;
+    font-size: 18px;
+    text-transform: capitalize;
+}
+
+.searchCtrl {
+    border: 0;
+    border-bottom: 1px solid #000;
+}
+
+.searchCtrl:focus,
+.searchCtrl:active,
+.searchCtrl:hover {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+
+::ng-deep.mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: #fff;
+}
+
+mat-card {
+    border-radius: 20px;
+}
+
+.text-blue {
+    color: #044f92;
+}
+
+.startBtn {
+    background-color: #044f92;
+    color: #fff;
+    border-radius: 20px;
+    padding: 0 30px;
+}
+
+.closeBtn,
+.cancelBtn {
+    border-radius: 20px;
+    padding: 0 30px;
+    border: 1px solid #044f92;
+    color: #044f92;
+}
+
+.text-blue {
+    color: #044f92;
+    font-weight: bolder;
+}
+
+.p-name {
+    color: #000;
+    font-size: 16px;
+    display: inline-block;
+    padding: 10px 0;
+}
+
+
+::ng-deep.mat-paginator-container {
+    display: flex;
+    align-items: center;
+    justify-content: center !important;
+    flex-direction: row-reverse;
+    padding: 0 8px;
+    flex-wrap: wrap-reverse;
+    width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+
+    .action-btn {
+        margin: 0 4px;
+    }
+}

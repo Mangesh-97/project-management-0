@@ -1,0 +1,83 @@
+<div class="row d-flex justify-content-around mb-4">
+    <div class="col-md-2">
+        <mat-card>
+            <mat-card-content>
+                <h3 class="title">Registred</h3>
+                <p class="display-3">
+                    {{registredProject$ | async}}
+                </p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div class="col-md-2">
+        <mat-card>
+            <mat-card-content>
+                <h3 class="title">Closed</h3>
+                <p class="display-3">
+                    {{closedProject$ | async}}
+                </p>
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div class="col-md-2">
+        <mat-card>
+            <mat-card-content>
+                <h3 class="title">Running</h3>
+                <p class="display-3">
+                    {{runningProject$ | async}}
+                </p>
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div class="col-md-2">
+        <mat-card>
+            <mat-card-content>
+                <h3 class="title">Closure Dealy</h3>
+                <p class="display-3">{{dealyProject$ | async}}</p>
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div class="col-md-2">
+        <mat-card>
+            <mat-card-content>
+                <h3 class="title">Cancelled</h3>
+                <p class="display-3">
+                    {{canceledProject$ | async}}
+
+                </p>
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="chart">
+
+            <h2>Project Plan Vs Actual</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-card class="border-0">
+                        <mat-card-content>
+                            <h4>
+                                Registration
+                            </h4>
+                            <app-project-chart ></app-project-chart>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,169 @@
+<mat-card class="shadow p-4 mb-5">
+    <mat-card-content>
+        <form [formGroup]="projectForm" (ngSubmit)="onProjectFormSubmit()">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>
+                                        <mat-form-field appearance="outline" class="w-100">
+                                            <mat-label>Enter Project Theme</mat-label>
+                                            <textarea matInput placeholder="Theme" rows="3"
+                                                formControlName="projectTheme"></textarea>
+                                            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                                            <!-- <mat-hint>Hint</mat-hint> -->
+                                            <mat-error *ngIf="projectForm.get('projectTheme')?.hasError('required')">
+                                                This field is mandatory
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="">Reason</label>
+                                    <mat-form-field appearance="outline" class="w-100">
+                                        <mat-select formControlName="reason" placeholder="--- Select ---">
+                                            <mat-option *ngFor="let ele of reason" [value]="ele">
+                                                {{ele}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-error>
+                                            This field is mandatory
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">Type</label>
+                                    <mat-form-field appearance="outline" class="w-100">
+                                        <mat-select formControlName="type" placeholder="--- Select ---">
+                                            <mat-option *ngFor="let ele of type" [value]="ele">
+                                                {{ele}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-error>
+                                            This field is mandatory
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">Division</label>
+                                    <mat-form-field appearance="outline" class="w-100">
+                                        <mat-select formControlName="division" placeholder="--- Select ---">
+                                            <mat-option *ngFor="let ele of division" [value]="ele">
+                                                {{ele}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-error>
+                                            This field is mandatory
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="">Category</label>
+                                    <mat-form-field appearance="outline" class="w-100">
+                                        <mat-select formControlName="category" placeholder="--- Select ---">
+                                            <mat-option *ngFor="let ele of category" [value]="ele">
+                                                {{ele}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-error>
+                                            This field is mandatory
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">Priority</label>
+                                    <mat-form-field appearance="outline" class="w-100">
+                                        <mat-select formControlName="priority" placeholder="--- Select ---">
+                                            <mat-option *ngFor="let ele of priority" [value]="ele">
+                                                {{ele}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-error>
+                                            This field is mandatory
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">Department</label>
+                                    <mat-form-field appearance="outline" class="w-100">
+                                        <mat-select formControlName="department" placeholder="--- Select ---">
+                                            <mat-option *ngFor="let ele of department" [value]="ele">
+                                                {{ele}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-error>
+                                            This field is mandatory
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="">Start Date as per Project Plan</label>
+
+                                    <mat-form-field class="example-full-width" appearance="outline" class="w-100">
+                                        <input matInput [min]="minDate" [matDatepicker]="picker1"
+                                            placeholder="D Month, Yr" formControlName="startDate">
+                                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker1></mat-datepicker>
+                                        <mat-error>
+                                            This field is mandatory
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">End Date as per Project Plan</label>
+                                    <!-- [min]="projectForm.controls['startDate'].value || minDate" -->
+                                    <mat-form-field class="example-full-width" appearance="outline" class="w-100">
+                                        <input matInput [matDatepicker]="picker2"
+                                            [min]="projectForm.controls['startDate'].value || minDate"
+                                            placeholder="D Month, Yr" formControlName="endDate">
+                                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker2></mat-datepicker>
+                                        <mat-error>
+                                            This field is mandatory
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">Location</label>
+                                    <mat-form-field appearance="outline" class="w-100">
+                                        <mat-select formControlName="location" placeholder="--- Select ---">
+                                            <mat-option *ngFor="let food of location" [value]="food">
+                                                {{food}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-error>
+                                            This field is mandatory
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <mat-card-actions class="d-flex justify-content-end">
+                        <p class="text-secondary  mr-3">1160 <span class="mx-3">|</span>Business</p>
+
+                        <button class="saveBtn" mat-raised-button color="primary">Save
+                            Project</button>
+                    </mat-card-actions>
+                </div>
+            </div>
+
+        </form>
+
+    </mat-card-content>
+</mat-card>

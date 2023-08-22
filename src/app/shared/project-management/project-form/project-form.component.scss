@@ -1,0 +1,19 @@
+label {
+    color: rgba(0, 0, 0, .6);
+}
+
+.saveBtn {
+    border-radius: 20px;
+    padding: 0px 30px;
+    background-color: #044f92;
+}
+
+mat-card {
+    border-radius: 20px;
+}
+
+@media screen and (max-width: 600px) {
+    .saveBtn {
+        padding: 0 10px;
+    }
+}
